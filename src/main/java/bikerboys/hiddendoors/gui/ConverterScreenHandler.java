@@ -1,6 +1,7 @@
 package bikerboys.hiddendoors.gui;
 
 import bikerboys.hiddendoors.HiddenDoors;
+import bikerboys.hiddendoors.block.ModBlocks;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -127,7 +128,7 @@ public class ConverterScreenHandler extends ScreenHandler {
     }
 
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, Blocks.STONECUTTER);
+        return canUse(this.context, player, ModBlocks.ITEM_CONVERTER);
     }
 
     public boolean onButtonClick(PlayerEntity player, int id) {
