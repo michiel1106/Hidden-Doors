@@ -1,6 +1,7 @@
 package bikerboys.hiddendoors.gui.screen;
 
 import bikerboys.hiddendoors.gui.ConverterScreenHandler;
+import bikerboys.hiddendoors.recipe.ConvertingRecipe;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -70,14 +71,14 @@ public class ConverterScreen extends HandledScreen<ConverterScreenHandler> {
             int i = this.x + 52;
             int j = this.y + 14;
             int k = this.scrollOffset + 12;
-            List<RecipeEntry<StonecuttingRecipe>> list = ((ConverterScreenHandler)this.handler).getAvailableRecipes();
+            List<RecipeEntry<ConvertingRecipe>> list = ((ConverterScreenHandler)this.handler).getAvailableRecipes();
 
             for(int l = this.scrollOffset; l < k && l < ((ConverterScreenHandler)this.handler).getAvailableRecipeCount(); ++l) {
                 int m = l - this.scrollOffset;
                 int n = i + m % 4 * 16;
                 int o = j + m / 4 * 18 + 2;
                 if (x >= n && x < n + 16 && y >= o && y < o + 18) {
-                    context.drawItemTooltip(this.textRenderer, ((StonecuttingRecipe)((RecipeEntry)list.get(l)).value()).getResult(this.client.world.getRegistryManager()), x, y);
+                    context.drawItemTooltip(this.textRenderer, ((ConvertingRecipe)((RecipeEntry)list.get(l)).value()).getResult(this.client.world.getRegistryManager()), x, y);
                 }
             }
         }
@@ -105,14 +106,14 @@ public class ConverterScreen extends HandledScreen<ConverterScreenHandler> {
     }
 
     private void renderRecipeIcons(DrawContext context, int x, int y, int scrollOffset) {
-        List<RecipeEntry<StonecuttingRecipe>> list = ((ConverterScreenHandler)this.handler).getAvailableRecipes();
+        List<RecipeEntry<ConvertingRecipe>> list = ((ConverterScreenHandler)this.handler).getAvailableRecipes();
 
         for(int i = this.scrollOffset; i < scrollOffset && i < ((ConverterScreenHandler)this.handler).getAvailableRecipeCount(); ++i) {
             int j = i - this.scrollOffset;
             int k = x + j % 4 * 16;
             int l = j / 4;
             int m = y + l * 18 + 2;
-            context.drawItem(((StonecuttingRecipe)((RecipeEntry)list.get(i)).value()).getResult(this.client.world.getRegistryManager()), k, m);
+            context.drawItem(((ConvertingRecipe)((RecipeEntry)list.get(i)).value()).getResult(this.client.world.getRegistryManager()), k, m);
         }
 
     }

@@ -4,7 +4,9 @@ import bikerboys.hiddendoors.block.ModBlocks;
 import bikerboys.hiddendoors.gui.ConverterScreenHandler;
 import bikerboys.hiddendoors.gui.screen.ConverterScreen;
 import bikerboys.hiddendoors.recipe.ConvertingRecipe;
-import bikerboys.hiddendoors.recipe.ModRecipes;
+
+import bikerboys.hiddendoors.recipe.ModRecipeSerializers;
+import bikerboys.hiddendoors.recipe.ModRecipeTypes;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.recipe.CraftingRecipe;
@@ -25,8 +27,8 @@ public class HiddenDoors implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 
-	public static final RecipeType<ConvertingRecipe> CONVERTING_RECIPE_RECIPE_TYPE = RecipeType.register("converting");
-	public static final RecipeSerializer<ConvertingRecipe> CONVERTING_RECIPE_RECIPE_SERIALIZER = RecipeSerializer.register("converting", new CuttingRecipe.Serializer<>());
+	//public static final RecipeType<ConvertingRecipe> CONVERTING_RECIPE_RECIPE_TYPE = RecipeType.register("converting");
+	//public static final RecipeSerializer<ConvertingRecipe> CONVERTING_RECIPE_RECIPE_SERIALIZER = RecipeSerializer.register("converting", new ConvertingRecipe(ConvertingRecipe::new));
 
 
 
@@ -36,6 +38,8 @@ public class HiddenDoors implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModBlocks.initialize();
+		ModRecipeTypes.RECIPE_TYPES.init();
+		ModRecipeSerializers.RECIPE_SERIALIZERS.init();
 		LOGGER.info("Hello Fabric world!");
 
 	}
